@@ -56,14 +56,14 @@ class _PhotoDetailsScreenState extends State<PhotoDetailsScreen> {
               child: Expanded(
                 child: Text(
                   widget.title,
-                  style: TextStyle(fontSize: 18),
+                  style: TextStyle(fontSize: 18, color: Colors.black),
                 ),
               ),
             ),
 
             const SizedBox(height: 30),
 
-            Text('ID: ${widget.id}', style: TextStyle(fontSize: 18)),
+            Text('ID: ${widget.id}', style: const TextStyle(fontSize: 18, color: Colors.black)),
           ],
         ),
       ),
