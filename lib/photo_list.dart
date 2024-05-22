@@ -34,7 +34,7 @@ class _PhotoListScreenState extends State<PhotoListScreen> {
         ),
         body: ListView.separated(
             itemBuilder: (context, index) {
-              return buildPhotoItem(photoList[index]);
+              return buildPhotoItem(context, photoList[index]);
             },
             separatorBuilder: (context, index) => const Divider(),
             itemCount: photoList.length));
@@ -55,18 +55,10 @@ class _PhotoListScreenState extends State<PhotoListScreen> {
         .showSnackBar(SnackBar(content: Text('$result')));
 
     if (response.statusCode == 200) {
-
-      print(response.body);
-
-      showDialog(context: context, builder: (context) {
-        return AlertDialog(content: Text(response.body),);
-      },);
-
       // data decode
       final decodedData = jsonDecode(response.body);
 
       final imageList = decodedData;
-
 
       for (Map<String, dynamic> img in imageList) {
         Photo photo = Photo(
