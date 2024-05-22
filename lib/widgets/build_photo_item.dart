@@ -19,9 +19,9 @@ Widget buildPhotoItem(Photo photo) {
                     style: TextStyle(color: Colors.white, fontSize: 15),),
                 ),*/
         ),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 8.0),
-          child: Expanded(
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: Text(
               '${photo.title}',
               style: TextStyle(color: Colors.black, fontSize: 18),
