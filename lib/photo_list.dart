@@ -51,9 +51,9 @@ class _PhotoListScreenState extends State<PhotoListScreen> {
 
     int result = response.statusCode;
 
-    ScaffoldMessenger.of(context)
+   /* ScaffoldMessenger.of(context)
         .showSnackBar(SnackBar(content: Text('$result')));
-
+*/
     if (response.statusCode == 200) {
       // data decode
       final decodedData = jsonDecode(response.body);

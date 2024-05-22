@@ -29,37 +29,39 @@ class _PhotoDetailsScreenState extends State<PhotoDetailsScreen> {
           iconTheme: const IconThemeData(color: Colors.white),
         ),
         body: SingleChildScrollView(
-          child: Column(
-            //   crossAxisAlignment: CrossAxisAlignment.center,
-            //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(20, 50, 20, 20),
-                child: Container(
-                  height: 400,
-                  width: double.maxFinite,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: NetworkImage(widget.image), fit: BoxFit.fill),
-                    color: Colors.green,
-                    borderRadius: BorderRadius.circular(10),
+          child: Center(
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 50, 20, 20),
+                  child: Container(
+                    height: 400,
+                    width: double.maxFinite,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: NetworkImage(widget.image), fit: BoxFit.fill),
+                      color: Colors.green,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
                   ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(20),
-                child: Expanded(
-                  child: Text(
-                    widget.title,
-                    style: TextStyle(fontSize: 18, color: Colors.black),
+             //   const SizedBox(height: 20),
+             //   Image.network(widget.image),
+                Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Expanded(
+                    child: Text(
+                      widget.title,
+                      style: TextStyle(fontSize: 18, color: Colors.black),
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(height: 30),
-              Text('ID: ${widget.id}',
-                  style: const TextStyle(fontSize: 18, color: Colors.black)),
-            ],
+                const SizedBox(height: 20),
+                Text('ID: ${widget.id}',
+                    style: const TextStyle(fontSize: 18, color: Colors.black)),
+              ],
+            ),
           ),
         ),
       );
