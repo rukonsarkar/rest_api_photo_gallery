@@ -3,32 +3,34 @@ import 'package:photo_gallery_app/photo.dart';
 
 Widget buildPhotoItem(Photo photo) {
   return ListTile(
-      subtitle: Row(
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          Container(
-            height: 100,
-            width: 100,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: NetworkImage(
-                      '${photo.image}')),
-              color: Colors.purple,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            /*child: const Center(
-                child: Text('600 x 600',
-                  style: TextStyle(color: Colors.white, fontSize: 15),),
-              ),*/
+      subtitle: Expanded(
+    child: Row(
+      children: [
+        Container(
+          height: 70,
+          width: 70,
+          decoration: BoxDecoration(
+            image: DecorationImage(image: NetworkImage('${photo.image}')),
+            color: Colors.green,
+            borderRadius: BorderRadius.circular(10),
           ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8.0),
+          /*child: const Center(
+                  child: Text('600 x 600',
+                    style: TextStyle(color: Colors.white, fontSize: 15),),
+                ),*/
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 8.0),
+          child: Expanded(
             child: Text(
               '${photo.title}',
-              style: TextStyle(color: Colors.black, fontSize: 25),
+              style: TextStyle(color: Colors.black, fontSize: 18),
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
             ),
           ),
-        ],
-      ));
-
+        ),
+      ],
+    ),
+  ));
 }

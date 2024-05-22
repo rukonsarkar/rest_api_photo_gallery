@@ -17,8 +17,8 @@ class _PhotoListScreenState extends State<PhotoListScreen> {
 
   @override
   void initState() {
-    _getPhotoList();
     super.initState();
+    _getPhotoList();
   }
 
   @override
@@ -66,6 +66,7 @@ class _PhotoListScreenState extends State<PhotoListScreen> {
       final decodedData = jsonDecode(response.body);
 
       final imageList = decodedData;
+
 
       for (Map<String, dynamic> img in imageList) {
         Photo photo = Photo(
