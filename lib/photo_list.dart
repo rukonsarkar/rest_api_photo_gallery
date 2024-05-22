@@ -15,6 +15,8 @@ class PhotoListScreen extends StatefulWidget {
 class _PhotoListScreenState extends State<PhotoListScreen> {
   List<Photo> photoList = [];
 
+  bool _getPhotoInProgress = false;
+
   @override
   void initState() {
     super.initState();
@@ -24,24 +26,31 @@ class _PhotoListScreenState extends State<PhotoListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text(
-            'Photo Gallery App',
-            style: TextStyle(
-                color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-          backgroundColor: Colors.green,
+      appBar: AppBar(
+        title: const Text(
+          'Photo Gallery App',
+          style: TextStyle(
+              color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
         ),
-        body: ListView.separated(
+        backgroundColor: Colors.green,
+      ),
+      body: Visibility(
+        visible: _getPhotoInProgress == false,
+        replacement: const Center(
+          child: CircularProgressIndicator(color: Colors.green,),
+        ),
+        child: ListView.separated(
             itemBuilder: (context, index) {
               return buildPhotoItem(context, photoList[index]);
             },
             separatorBuilder: (context, index) => const Divider(),
-            itemCount: photoList.length));
+            itemCount: photoList.length),
+      ),
+    );
   }
 
   Future<void> _getPhotoList() async {
-
+    _getPhotoInProgress = true;
     setState(() {});
 
     String photoListUrl = 'https://jsonplaceholder.typicode.com/photos';
@@ -51,7 +60,7 @@ class _PhotoListScreenState extends State<PhotoListScreen> {
 
     int result = response.statusCode;
 
-   /* ScaffoldMessenger.of(context)
+    /* ScaffoldMessenger.of(context)
         .showSnackBar(SnackBar(content: Text('$result')));
 */
     if (response.statusCode == 200) {
@@ -67,14 +76,11 @@ class _PhotoListScreenState extends State<PhotoListScreen> {
             image: img['thumbnailUrl'] ?? '');
         photoList.add(photo);
       }
-
     } else {
       ScaffoldMessenger.of(context)
           .showSnackBar(const SnackBar(content: Text('Something went wrong')));
     }
+    _getPhotoInProgress = false;
     setState(() {});
   }
-
-
 }
-
